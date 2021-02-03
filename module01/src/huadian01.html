@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            /*内外边距都为零，一般项目列表默认的前面都有小黑点*/
+            /*隐藏无序排列的小黑点,*/
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        /* 修改滚动条-开始 */
+        ::-webkit-scrollbar {
+            /* 整个滚动条. */
+            width: 10px;
+            height: 10px
+        }
+
+        ::-webkit-scrollbar-track {
+            /* 滚动条轨道 */
+            background: 0 0
+        }
+
+        ::-webkit-scrollbar-thumb {
+            /* 滚动条上的滚动滑块. */
+            background-color: #ccc;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #666
+        }
+
+        /* 修改滚动条-结束 */
+
+        .zhiding {
+            /*右下角的置顶和客服反馈*/
+            padding: 0;
+            margin: 0;
+            position: fixed;
+            bottom: 60px;
+            right: 60px;
+            overflow: hidden;
+            width: 42px;
+            height: 93px;
+            z-index: 1;
+        }
+        #box1 {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border: 1px grey solid;
+            margin-top: 2px;
+            cursor: pointer;
+        }
+
+        #box1 img {
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            left: 8px;
+            top: 8px;
+        }
+
+        .box2 {
+            width: 40px;
+            height: 40px;
+            margin-top: 2px;
+            background-color: white;
+            border: 1px grey solid;
+        }
+
+        .box2 span {
+            position: absolute;
+            left: 8px;
+            top: 58px;
+            font-size: 5px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="zhiding">
+        <!--右下角的置顶和客服反馈-->
+        <div id="box1"><img src="E:\Idea2017\IDEA 2017\Idea Protect\protect01\image\箭头 上.png" alt=""></div>
+        <div class="box2"><span>客服</span></div>
+    </div>
+    <script>
+        <!--滚动条-->
+        //1.获取按钮元素
+        var topBtn = document.getElementById('topBtn');
+        var timer;//设置时间标识符
+        //2.绑定点击事件
+        topBtn.onclick = function () {
+            timer = setInterval(function () {
+                //功能代码块
+                var to_top_value = document.body.scrollTop || document.documentElement.scrollTop;
+                //获取滚动条距离页面顶部的间隙/位置（这两种代码都可以用）
+                console.log(to_top_value)
+                var speed_value = Math.floor(-to_top_value / 6)
+                if (
+                    to_top_value <= 0) {
+                    clearInterval(timer)
+                }
+                document.body.scrollTop = document.documentElement.scrollTop = to_top_value + speed_value;
+                //每次点击时往上走十像素
+            }, 100)
+        }
+        window.onscroll = function () {
+            var to_top_value = document.body.scrollTop || document.documentElement.scrollTop;
+            console.log(to_top_value);
+        }
+    </script>
+    <div class="header">
+        <!-- 网页头部：网页LOGO,相关联网站 -->
+
+    </div>
+</body>
+</html>
